@@ -8,22 +8,20 @@ let currentRoundNumber = 1;
 const generateTarget = () => Math.floor(Math.random() * Math.floor(10));
 
 const compareGuesses = (human, computer, secret) => {
-
-//calculate the least difference between guesses and computer
+// calculate the least difference between guesses and computer
 
   const humanGuess = Math.abs(human - secret);
   const computerGuess = Math.abs(computer - secret);
 
-  if (humanGuess <= computerGuess) {
-    return true;
-  }
-  if (humanGuess > computerGuess) {
-    return false;
-  }
+  return humanGuess <= computerGuess;
 
-
-}
-
+  // if (humanGuess <= computerGuess) {
+  //   return true;
+  // }
+  // if (humanGuess > computerGuess) {
+  //   return false;
+  // }
+};
 
 // // testing all cases
 // //     human wins
@@ -38,7 +36,17 @@ const compareGuesses = (human, computer, secret) => {
 // console.log(c)
 
 
+const updateScore = (winner) => {
+  if (winner === 'human') {
+    humanScore += 1;
+  }
 
-const updateScore = () => {
-    
-}
+  if (winner === 'computer') {
+    computerScore += 1;
+  }
+};
+
+
+const advanceRound = () => {
+  currentRoundNumber += 1;
+};
